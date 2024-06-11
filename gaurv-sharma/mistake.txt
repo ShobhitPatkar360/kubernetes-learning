@@ -1,0 +1,10 @@
+Your mistakes (improved form is not written here)
+
+1. When you list all the pods then you write --all-namespace  // you forgets to put s at the last of "--all-namespace"
+2. You think --namespace <ns-name> & -n <ns-name> are different // actually both works in exactly same manner.
+3. You typed incorrect syntax for ..ating compute resorce quota as "request.cpu: 0.5" 
+                          // actually you should type the "s" at the last of "request"
+4. I put pod request < ns request for a resource // reqquest and limit koi range nhi hai, vo to dono hi limits hai,
+            pod ke request and limit, dono hi kam hona chahiye.
+5. I thought resource quota me sabhi pods ki only resource limits ka sum hota hai, but unki request ka bhi sum hota hai.
+6. 
