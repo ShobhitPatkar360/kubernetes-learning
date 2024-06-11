@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sp-deployment
+spec:
+  replicas: 5 
+  selector:
+    matchLabels:
+      app: myapp1
+  template:
+    metadata:
+      name: dippu-pod
+      labels:
+        app: myapp1
+    spec:
+      containers:
+      - name: dippu-container
+        image: coolgourav147/nginx-custom:v1

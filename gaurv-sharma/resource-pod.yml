@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: lavaris-pod2
+  labels:
+    app: myapp2
+spec:
+  containers:
+  - name: baba-container
+    image: coolgourav147/nginx-custom
+    resources:
+      requests:
+        cpu: 100m
+        memory: 150Mi
+      limits:
+        cpu: 500m
+        memory: 1000Mi
+
+
+
