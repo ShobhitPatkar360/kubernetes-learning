@@ -1,0 +1,28 @@
+# creating limit range object first time
+#apiVersion: v1
+#kind: LimitRange
+#metadata:
+#  name: my-first-limit-range
+#spec:
+#  limits:
+#  - default:             #  This specifies resource limit for the container
+#      cpu: 200m
+#      memory: 500m
+#    type: Container      # C should be capital
+
+
+
+# prociding maximum and minimum to limit range
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: limit-range-with-max-min
+spec:
+  limits:
+  - min:                                    # pod request should not be less than this value
+      cpu: 0.2
+      memory: 200Mi
+    max:                                    # pod limit should not be greter than this value
+      cpu: 0.9
+      memory: 700Mi
+    type: Container 
