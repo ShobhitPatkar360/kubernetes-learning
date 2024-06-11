@@ -1,0 +1,12 @@
+# ResourceQuota for setting some compute limits of  pods - cpu -> 0.5 to 1 & memory -> 500Mi to 1Gi
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: mcq
+spec:
+  hard:
+    requests.cpu: 0.7
+    requests.memory: 700Mi
+    limits.cpu: 1
+    limits.memory: 1Gi
+    pods: 10
