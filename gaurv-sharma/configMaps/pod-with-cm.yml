@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-with-cm
+spec:
+  containers:
+  - image: coolgourav147/nginx-custom
+    name: firstcontainer
+    env:
+    - name: variable1fromcm
+      valueFrom:
+        configMapKeyRef:
+          key: keyA
+          name: cm-from-commandline
+    - name: variable2fromcm
+      valueFrom:
+        configMapKeyRef:
+          key: keyB
+          name: cm-from-commandline
+    
+

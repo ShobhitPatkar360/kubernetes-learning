@@ -1,0 +1,9 @@
+apiVersion: v1
+data:
+  keyA: valueA
+  keyB: valueB
+  keyc: valueC
+kind: ConfigMap
+metadata:
+  name: cm-from-commandline
+  namespace: test

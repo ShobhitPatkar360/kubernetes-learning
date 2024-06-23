@@ -1,0 +1,18 @@
+# here we are injectng the complete config map
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-with-cm2
+spec:
+  containers:
+  - image: coolgourav147/nginx-custom
+    name: secondcontainer
+    envFrom:
+       - configMapRef:
+           name: cm-from-commandline2
+
+
+
+    
+

@@ -1,0 +1,18 @@
+apiVersion: v1
+data:
+  keyA: |
+    dataline1
+    dataline2
+    dataline3
+  keyB: |
+    dataline1
+    dataline2
+    dataline3
+  keyc: |
+    dataline1
+    dataline2
+    dateline3
+kind: ConfigMap
+metadata:
+  name: cm-from-commandline2
+  namespace: test
