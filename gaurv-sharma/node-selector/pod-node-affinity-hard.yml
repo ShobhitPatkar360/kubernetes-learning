@@ -1,0 +1,20 @@
+# Hum ek Pod create karre hai, jo ki nodeAffinity (like node selector)  ke according Scheduleing karega, agar matching nhi hogi to fir bhi ye kha bhi pod ko schedule kar dega
+# implementation of requiredDuringSchedulingIgnoredDuringExecution => hum requirement de rahi hai, thus compulsary  hai
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-node-affinity-hard
+spec:
+  containers:
+  - name: with-node-affinity
+    image: nginx
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: size
+            operator: In
+            values:
+            - extralarge

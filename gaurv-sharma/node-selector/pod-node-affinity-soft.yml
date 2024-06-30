@@ -1,0 +1,22 @@
+# Hum ek Pod create karre hai, jo ki nodeSelector ke according Scheduleing karega, are matching nhi hogi to fir bhi ye kha bhi pod ko schedule kar dega
+# implementation of preferredDuringSchedulingIgnoredDuringExecution => hum preference de rahi hai, but koi compulsary nhi hai
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-node-affinity-soft
+spec:
+  containers:
+  - name: with-node-affinity
+    image: nginx
+  affinity:
+    nodeAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 1
+        preference:
+          matchExpressions:
+          - key: size
+            operator: In
+            values:
+            - small # at next try give size = extralarge, you will see your pod would be still created.
+  

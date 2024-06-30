@@ -1,0 +1,14 @@
+# This is pod jisme 1 st time nodeSelector ka concept implement karra hoon
+
+apiVersion: v1  # these 2 sections are fixed as per (kubectl explain <resource name>)
+kind: Pod
+metadata: # data about data
+  name: pod-node-selector
+spec:
+  containers:  # it’s an array, you will specify all the containers
+    - name: containername
+      image: nginx #hum ek hi container ki image ko  use karre hai
+      imagePullPolicy: Never
+  nodeSelector:
+    size: "large"  # This pod will be created only in the node with label size=large
+                   # Otherwise it will show that pod will be in pending state
