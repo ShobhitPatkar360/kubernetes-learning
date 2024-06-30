@@ -1,0 +1,18 @@
+# Yaha par hum ek pod create karenge jisme tum toleration se karenge
+# Node "minikube mei ek Taint set kiya hai by uing the command - kubectl taint node minikube mysize=large:NoSchedule
+
+apiVersion: v1  # these 2 sections are fixed as per (kubectl explain <resource name>)
+kind: Pod
+metadata: # data about data
+  name: pod-toleration
+spec:
+  containers:  # it’s an array, you will specify all the containers
+    - name: containername
+      image: nginx #hum ek hi container ki image ko  use karre hai
+      imagePullPolicy: Never     # kubernet first check the image in local machine
+
+  tolerations:
+    - effect: "NoSchedule" # empty effect means all effects will be valid
+      key: "mysize" # empty key means pod can tolerate all Taints
+      operator: "Equal" # not giving operator line will make default operator - Equal
+      value: "large"  # empty value means all values will be valid

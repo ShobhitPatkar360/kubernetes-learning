@@ -1,0 +1,18 @@
+# Yaha par hum toleraton seconds set kerege jisme pod ka ek life-time set ho jata hai
+
+apiVersion: v1  # these 2 sections are fixed as per (kubectl explain <resource name>)
+kind: Pod
+metadata: # data about data
+  name: pod-toleration-experiments
+spec:
+  containers:  # it’s an array, you will specify all the containers
+    - name: containername
+      image: nginx #hum ek hi container ki image ko  use karre hai
+      imagePullPolicy: Never     # kubernet first check the image in local machine
+  tolerations:
+       - effect: "NoExecute" 
+         key: "mysize" 
+         operator: "Equal" 
+         value: "large"
+         tolerationSeconds: 60   # agar kisi node ke Taint ko humara pod toleration karega 
+                                 # to fir ye toleration only 60 seconds ke liye hoga

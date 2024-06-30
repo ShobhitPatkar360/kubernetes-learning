@@ -1,0 +1,20 @@
+# Yaha par hum ek pod create karenge jisme hum toleration attribut se reated kuch testing karenge
+# kubectl taint node minikube mysize=large:NoSchedule 
+# mysize=large:NoSchedule
+
+apiVersion: v1  # these 2 sections are fixed as per (kubectl explain <resource name>)
+kind: Pod
+metadata: # data about data
+  name: pod-toleration-experiments
+spec:
+  containers:  # it’s an array, you will specify all the containers
+    - name: containername
+      image: nginx #hum ek hi container ki image ko  use karre hai
+      imagePullPolicy: Never     # kubernet first check the image in local machine
+
+  # Not provide operator line
+  tolerations:
+    - effect: "NoSchedule" 
+      key: "mysize" 
+
+      value: "large" 
