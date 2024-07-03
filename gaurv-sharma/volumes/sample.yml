@@ -1,0 +1,26 @@
+# Here we are creating a pod, jisme ek secret jo ki already created hai, vo inject hoga.
+# We are injecting the secret variables one by one
+
+
+apiVersion: v1  # these 2 sections are fixed as per (kubectl explain <resource name>)
+kind: Pod
+metadata: # data about data
+  name: pod-secret-variable-wise
+spec:
+  containers:  # it’s an array, you will specify all the containers
+    - name: containername
+      image: nginx #hum ek hi container ki image ko  use karre hai 
+      imagePullPolicy: Never     # kubernet first check the image in local machine
+      env:
+       -  name: database-username       # name of your custom variables
+          valueFrom:
+            secretKeyRef:
+              key: username # variable-name-in-secret
+              name: mysecret # your-secret-name
+
+       -  name: database-password       # name of your custom variables
+          valueFrom:
+            secretKeyRef:
+              key: password # variable-name-in-secret
+              name: mysecret # your-secret-name
+

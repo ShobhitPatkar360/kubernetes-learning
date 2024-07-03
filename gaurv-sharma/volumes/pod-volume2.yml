@@ -1,0 +1,20 @@
+# here we are going tho create a hostpath volume jo ki node ka volume hai
+# it means pod ke termination ke baad bhi volume persist hoga
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-with-hostpath
+spec:
+  containers:
+    - name: mycontainer
+      image: nginx
+      volumeMounts:
+        - mountPath: /my-data-on-pod
+          name: hostpath-volume
+  volumes:
+    - name: hostpath-volume
+      hostPath:
+        path: /my-data-on-host
+        type: Directory
+

@@ -1,0 +1,19 @@
+# Here we are going to create a volume and mount it to the pod
+# Here the voluem type is emptyDir - Pod ka volume
+
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-with-emptydir
+spec:
+  containers:
+    - name: mycontainer
+      image: nginx
+      volumeMounts:
+        - mountPath: /my-data
+          name: emptydir-volume
+  volumes:
+    - name: emptydir-volume
+      emptyDir: {}
+
